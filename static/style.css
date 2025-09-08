@@ -1,0 +1,189 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #6dd5ed, #2193b0);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+/* Effects container */
+#weather-effects {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  overflow: hidden;
+  z-index: -1; /* behind the app */
+}
+
+/* ☀ Sun effect */
+.sun {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #FFD700 60%, #FFA500 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(1.2); opacity: 1; }
+}
+
+/* ☁ Cloud effect */
+.cloud {
+  width: 120px;
+  height: 60px;
+  background: #fff;
+  border-radius: 60px;
+  position: absolute;
+  top: 100px;
+  left: -200px;
+  animation: cloudMove 40s linear infinite;
+  box-shadow: 60px 0px #fff, 30px -20px #fff, 90px -10px #fff;
+}
+
+@keyframes cloudMove {
+  0% { left: -200px; }
+  100% { left: 110%; }
+}
+
+/* 🌧 Rain effect */
+.raindrop {
+  width: 2px;
+  height: 15px;
+  background: #00f;
+  position: absolute;
+  top: -20px;
+  animation: rainFall 1s linear infinite;
+}
+
+@keyframes rainFall {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* ❄ Snow effect */
+.snowflake {
+  color: #fff;
+  font-size: 1.5em;
+  position: absolute;
+  top: -20px;
+  animation: snowFall 10s linear infinite;
+}
+
+@keyframes snowFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+
+.weather-app {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+.weather-app h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Input + Button Row */
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input {
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 220px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #ff9800;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #e68900;
+}
+
+/* Weather result */
+#weather-result {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  animation: fadeIn 0.5s ease-in-out;
+  width: 300px;
+  max-width: 90vw;
+}
+
+.weather-card h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.weather-info img {
+  width: 80px;
+  height: 80px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✅ Responsive adjustments */
+@media (max-width: 600px) {
+  .weather-app h1 {
+    font-size: 1.8rem;
+  }
+
+  input {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  button {
+    width: 100%;
+    max-width: 250px;
+    margin-top: 10px;
+  }
+
+  .weather-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .weather-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
