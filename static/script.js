@@ -28,6 +28,6 @@ async function getWeather() {
       `;
     }
   } catch (error) {
-    resultDiv.innerHTML = "Error fetching weather data.";
+    resultDiv.innerHTML = "Error fetching weather is  data.";
   }
 }
